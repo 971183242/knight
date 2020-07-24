@@ -1,4 +1,4 @@
-package com.example.knight;
+package com.will.knight;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

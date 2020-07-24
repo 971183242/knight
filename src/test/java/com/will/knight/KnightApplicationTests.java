@@ -1,4 +1,4 @@
-package com.example.knight;
+package com.will.knight;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

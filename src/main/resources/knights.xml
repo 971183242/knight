@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+
+    <bean id="knight" class="com.will.knight.domain.knight.BraveKnight">
+        <constructor-arg ref="quest"/>              <!--注入Quest bean-->
+    </bean>
+    <bean id="quest" class="com.will.knight.domain.quest.SlayDragonQuest">      <!--创建SlayDragonQuest-->
+    </bean>
+
+    <bean id="minstrel" class="com.will.knight.domain.minstrel.Minstrel"/>
+    <aop:config>
+        <aop:aspect ref="minstrel">
+            <aop:pointcut expression="execution(* *.embarkOnQuest(..))" id="embark"/>
+            <aop:before pointcut-ref="embark" method="singBeforeQuest"/>
+            <aop:after pointcut-ref="embark"
+                       method="singAfterQuest"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
